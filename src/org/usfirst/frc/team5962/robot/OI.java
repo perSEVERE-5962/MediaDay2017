@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team5962.robot.commands.flashLEDS;
+import org.usfirst.frc.team5962.robot.subsystems.ledFlashes;
 import org.usfirst.frc.team5962.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5962.robot.commands.TurnLeft;
 
@@ -18,6 +20,7 @@ public class OI {
 	public Button turnLeftBtn;
 	public Joystick joystickRight;
 
+	 	public Button ledFlashes;
 	public OI() {
 		joystickLeft = new Joystick(1);
 		joystickRight = new Joystick(2);
@@ -25,6 +28,8 @@ public class OI {
 		turnLeftBtn.whenPressed(turnLeft);
 	}
 
+		ledFlashes = new JoystickButton(joystickLeft, 4);
+		ledFlashes.whenPressed(new flashLEDS());
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -32,6 +37,7 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
+	
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
