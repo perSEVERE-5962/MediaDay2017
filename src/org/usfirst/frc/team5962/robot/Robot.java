@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team5962.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5962.robot.commands.flashLEDS;
 import org.usfirst.frc.team5962.robot.subsystems.Drive;
-import org.usfirst.frc.team5962.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5962.robot.subsystems.ledFlashes;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,7 +21,7 @@ import org.usfirst.frc.team5962.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final ledFlashes ledFlashes = new ledFlashes();
 	public static OI oi;
 	public static Drive drive;
 	Command autonomousCommand;
@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		oi = new OI();drive= new Drive();
-		chooser.addDefault("Default Auto", new ExampleCommand());
+		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}

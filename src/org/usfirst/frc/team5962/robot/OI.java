@@ -2,8 +2,10 @@ package org.usfirst.frc.team5962.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team5962.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5962.robot.commands.flashLEDS;
+import org.usfirst.frc.team5962.robot.subsystems.ledFlashes;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -12,11 +14,14 @@ import org.usfirst.frc.team5962.robot.commands.ExampleCommand;
 
  public class OI {	
 	 	public Joystick joystickLeft;
- public Joystick joystickRight;
+	 	public Joystick joystickRight;
+	 	public Button ledFlashes;
 	public OI() {
-joystickLeft = new Joystick(1);
-joystickRight = new Joystick(2);
-	}
+		joystickLeft = new Joystick(1);
+		joystickRight = new Joystick(2);
+		ledFlashes = new JoystickButton(joystickLeft, 4);
+		ledFlashes.whenPressed(new flashLEDS());
+		}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -24,6 +29,7 @@ joystickRight = new Joystick(2);
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
+	
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
