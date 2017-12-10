@@ -41,6 +41,10 @@ public static SpeedController leftDrive;
 public static SpeedController rightDrive;
 public static void init()
 {
+	robotLeftVictor1 = new Victor(PWM_CHANNEL_0);
+	robotLeftVictor2 = new Victor(PWM_CHANNEL_1);
+	robotRightVictor1 = new Victor(PWM_CHANNEL_6);
+	robotRightVictor2 = new Victor(PWM_CHANNEL_7);
 	leftDrive = new MultiSpeedController(robotLeftVictor1, robotLeftVictor2);
 
 rightDrive = new MultiSpeedController(robotRightVictor1, robotRightVictor2);
