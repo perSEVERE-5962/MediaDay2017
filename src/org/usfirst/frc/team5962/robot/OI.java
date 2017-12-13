@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team5962.robot.commands.flashLEDS;
 import org.usfirst.frc.team5962.robot.subsystems.ledFlashes;
-import org.usfirst.frc.team5962.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5962.robot.commands.TurnLeft;
 
 /**
@@ -26,10 +25,9 @@ public class OI {
 		joystickRight = new Joystick(2);
 		turnLeftBtn = new JoystickButton(joystickLeft, 2);
 		turnLeftBtn.whenPressed(turnLeft);
-	}
-
 		ledFlashes = new JoystickButton(joystickLeft, 4);
 		ledFlashes.whenPressed(new flashLEDS());
+	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
