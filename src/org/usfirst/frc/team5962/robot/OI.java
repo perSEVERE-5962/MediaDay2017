@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team5962.robot.commands.flashLEDS;
 import org.usfirst.frc.team5962.robot.subsystems.ledFlashes;
 import org.usfirst.frc.team5962.robot.commands.TurnLeft;
+import org.usfirst.frc.team5962.robot.commands.TurnRight;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -15,8 +16,10 @@ import org.usfirst.frc.team5962.robot.commands.TurnLeft;
 
 public class OI {
 	TurnLeft turnLeft = new TurnLeft();
+	TurnRight turnRight = new TurnRight();
 	public Joystick joystickLeft;
 	public Button turnLeftBtn;
+	public Button turnRightBtn;
 	public Joystick joystickRight;
 
 	 	public Button ledFlashes;
@@ -25,6 +28,8 @@ public class OI {
 		joystickRight = new Joystick(2);
 		turnLeftBtn = new JoystickButton(joystickLeft, 2);
 		turnLeftBtn.whenPressed(turnLeft);
+		turnRightBtn = new JoystickButton(joystickLeft, 3);
+		turnRightBtn.whenPressed(turnRight);
 		ledFlashes = new JoystickButton(joystickLeft, 4);
 		ledFlashes.whenPressed(new flashLEDS());
 	}

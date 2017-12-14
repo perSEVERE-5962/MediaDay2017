@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5962.robot.commands.RunJoystickTank;
 import org.usfirst.frc.team5962.robot.sensors.RobotGyro;
 import org.usfirst.frc.team5962.robot.commands.flashLEDS;
 import org.usfirst.frc.team5962.robot.subsystems.Drive;
@@ -101,6 +102,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		Command command = new RunJoystickTank();
+		command.start();
 	}
 
 	/**
