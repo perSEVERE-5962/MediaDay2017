@@ -42,6 +42,7 @@ public class Robot extends IterativeRobot {
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		RobotMap.myRobot.setMaxOutput(0.5);
 	}
 
 	/**
@@ -102,8 +103,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		Command command = new RunJoystickTank();
-		command.start();
+		oi.startDriveCommand();
 	}
 
 	/**
