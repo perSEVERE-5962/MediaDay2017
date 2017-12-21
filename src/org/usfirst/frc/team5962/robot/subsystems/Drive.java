@@ -36,10 +36,10 @@ public class Drive extends Subsystem {
 //	public void arcadeJoystickLeft() {
 //		RobotMap.myRobot.arcadeDrive(Robot.oi.joystickLeft);
 //	}
-//	public void arcadeGame() {
-//		//RobotMap.myRobot.arcadeDrive(Robot.oi.gamePad1);
-//		RobotMap.myRobot.arcadeDrive(Robot.oi.driverPad);
-//	}
+	public void arcadeGame() {
+		//RobotMap.myRobot.arcadeDrive(Robot.oi.gamePad1);
+		RobotMap.myRobot.arcadeDrive(Robot.oi.joystickLeft);
+	}
 //
 //	public void arcadeXGame() {
 //		RobotMap.myRobot.arcadeDrive(Robot.oi.gamePad2);

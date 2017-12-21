@@ -3,9 +3,14 @@ package org.usfirst.frc.team5962.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5962.robot.commands.flashLEDS;
 import org.usfirst.frc.team5962.robot.subsystems.ledFlashes;
+import org.usfirst.frc.team5962.robot.commands.RunArcadeGame;
+import org.usfirst.frc.team5962.robot.commands.RunJoystickTank;
+import org.usfirst.frc.team5962.robot.commands.Throttle;
 import org.usfirst.frc.team5962.robot.commands.TurnLeft;
 import org.usfirst.frc.team5962.robot.commands.TurnRight;
 
@@ -23,6 +28,10 @@ public class OI {
 	public Joystick joystickRight;
 
 	 	public Button ledFlashes;
+	 	
+	 	public Button throttle;
+	 	private boolean throttleEnabled = false;
+	 	
 	public OI() {
 		joystickLeft = new Joystick(1);
 		joystickRight = new Joystick(2);
@@ -32,6 +41,8 @@ public class OI {
 		turnRightBtn.whenPressed(turnRight);
 		ledFlashes = new JoystickButton(joystickLeft, 4);
 		ledFlashes.whenPressed(new flashLEDS());
+		throttle = new JoystickButton(joystickLeft, 1);
+		throttle.whenPressed(new Throttle());
 	}
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -61,4 +72,20 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	
+	
+	public void startDriveCommand() {
+		//Command command = new RunJoystickTank();
+		Command command = new RunArcadeGame();
+		command.start();
+	}
+	
+	public boolean isThrottleEnabled() {
+		return throttleEnabled;
+	}
+	
+	public void toggleThrottle() {
+		throttleEnabled = !throttleEnabled;
+		SmartDashboard.putString("throttle enabled", "" + throttleEnabled);
+	}
 }

@@ -32,6 +32,7 @@ public class flashLEDS  extends Command{
 				Robot.ledFlashes.deactivateThree();
 			isPressed = true;
 			}
+			Robot.oi.startDriveCommand();
 		}
 
 		// Make this return true when this Command no longer needs to run execute()

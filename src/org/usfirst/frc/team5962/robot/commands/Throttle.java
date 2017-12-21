@@ -7,41 +7,35 @@ import org.usfirst.frc.team5962.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class TurnRight extends Command{
-	boolean gyrostop = true;
+public class Throttle extends Command{
 	boolean isFinished = false;
-	public TurnRight() {
+	boolean isThrottleEnabled = false;
+	public Throttle() {
 		   requires(Robot.drive);
-
+		   
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		isFinished = false;
+		   Robot.oi.toggleThrottle();
+		   isThrottleEnabled = Robot.oi.isThrottleEnabled();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	public void execute() {
-		SmartDashboard.putString("gyro", "" + Robot.gyro.getGyroAngle());
-		RobotMap.myRobot.setMaxOutput(1);
 
-		if (gyrostop)
-			Robot.gyro.resetGyro();
-		isFinished = false;
-		gyrostop = false;
-		if (Robot.gyro.getGyroAngle() < 90)
-		RobotMap.myRobot.drive(-0.25, -1); // turn Right-
-		else { RobotMap.myRobot.drive(0, 0);
-		gyrostop = true;
-		isFinished = true;
-		RobotMap.myRobot.setMaxOutput(0.5);
-		Robot.oi.startDriveCommand();
+		if (isThrottleEnabled) {
+			RobotMap.myRobot.setMaxOutput(0.25);
+		} else {
+			RobotMap.myRobot.setMaxOutput(0.5);
 		}
+		isFinished = true;
+		Robot.oi.startDriveCommand();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		//if (gyrostop)
-		//	Robot.gyro.resetGyro();
 		return isFinished;
 	}
 
@@ -54,7 +48,5 @@ public class TurnRight extends Command{
 	protected void interrupted() {
 	}
 	
-	
-
-	}
+}
 

@@ -17,23 +17,23 @@ public class TurnLeft extends Command{
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		isFinished = false;
-		gyrostop = false;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	public void execute() {
 		SmartDashboard.putString("gyro", "" + Robot.gyro.getGyroAngle());
-		
+		RobotMap.myRobot.setMaxOutput(1);
 		if (gyrostop)
 			Robot.gyro.resetGyro();
+		isFinished = false;
+		gyrostop = false;
 		if (Robot.gyro.getGyroAngle() > -90)
 		RobotMap.myRobot.drive(-0.25, 1); // turn left-
 		else { RobotMap.myRobot.drive(0, 0);
 		gyrostop = true;
 		isFinished = true;
-		Command command = new RunJoystickTank();
-		command.start();
+		RobotMap.myRobot.setMaxOutput(0.5);
+		Robot.oi.startDriveCommand();
 		}
 	}
 
